@@ -277,3 +277,21 @@ mindmap
       Pen and paper
       Mermaid
 ```
+
+```mermaid
+graph TB
+    A[Playwright] --> B[BrowserType]
+    B --> C1{Browser}
+    C1 --> D1[BrowserContext]
+    D1 --> E1[Page]
+    E1 --> F1[Frame]
+    F1 --> G1[ElementHandle]
+    E1 --> H1[Network]
+    
+    C1 --> D2[BrowserContext]
+    D2 --> E2[Page]
+    E2 --> F2[Frame]
+    F2 --> G2[ElementHandle]
+    E2 --> H2[Network]
+
+```
