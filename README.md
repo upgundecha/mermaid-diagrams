@@ -295,3 +295,54 @@ graph TB
     E2 --> H2[Network]
 
 ```
+
+```mermaid
+graph TD
+
+    subgraph "Data Ingestion & Streaming"
+        EH[Azure Event Hubs]
+        ADO[Azure DevOps] --> EH
+        SN[ServiceNow] --> EH
+    end
+
+    subgraph "Data Processing & Transformation"
+        Databricks[Azure Databricks]
+        EH --> Databricks
+        Databricks --> SQL[Azure SQL Database]
+    end
+
+    subgraph "Data Storage & Semantic Layer"
+        AAS[Azure Analysis Services]
+        SQL --> AAS
+    end
+
+    subgraph "Presentation Layer"
+        Tableau[Tableau]
+        SQL --> Tableau
+        AAS --> Tableau
+    end
+
+    subgraph "Automation & Monitoring"
+        LA[Azure Logic Apps]
+        Monitor[Azure Monitor]
+        EH --> Monitor
+        SQL --> Monitor
+        Databricks --> Monitor
+        AAS --> Monitor
+        Tableau --> Monitor
+        Databricks --> LA
+    end
+
+    subgraph "Security"
+        AAD[Azure Active Directory]
+        SQL --> AAD
+        AAS --> AAD
+        Tableau --> AAD
+        EH --> AAD
+    end
+
+    subgraph "Backup & Recovery"
+        Backup[Azure Backup]
+        SQL --> Backup
+    end
+```
